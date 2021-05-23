@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const gravatar = require('gravatar');
 const { Schema, model, SchemaTypes } = mongoose;
+const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-const { string } = require('joi');
+const { nanoid } = require('nanoid');
 
 const userSchema = new Schema(
     {
@@ -33,6 +33,15 @@ const userSchema = new Schema(
             default: function () {
                 return gravatar.url(this.email, { s: 250 }, true)
             }
+        },
+        verify: {
+            type: Boolean,
+            default: false,
+        },
+        verifyToken: {
+            type: String,
+            required: true,
+            default: nanoid(),
         }
     },
     {
