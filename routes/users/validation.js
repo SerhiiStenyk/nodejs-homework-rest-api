@@ -3,7 +3,7 @@ const Joi = require('joi');
 const validSignup = Joi.object({
 
     email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net' , 'ua'] } }).required(),
     
     password: Joi.string()
         .min(6)
@@ -15,7 +15,7 @@ const validSignup = Joi.object({
 const validLogin = Joi.object({
     
     email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'ua'] } }).required(),
     
     password: Joi.string()
         .min(6)
